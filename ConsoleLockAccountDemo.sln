@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLockAccountDemo", "ConsoleLockAccountDemo\ConsoleLockAccountDemo.csproj", "{B59162C4-B047-4932-AB66-4B9BBD8AB99D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLockAccountDemo", "src\ConsoleLockAccountDemo.csproj", "{B59162C4-B047-4932-AB66-4B9BBD8AB99D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
