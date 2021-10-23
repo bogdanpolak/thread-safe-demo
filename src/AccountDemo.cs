@@ -17,8 +17,11 @@ namespace ConsoleLockAccountDemo
         {
             var account = new Account(InitialBalance);
             var tasks = Enumerable.Range(0, NumOfTasks)
-                .Select(idx => Task.Run( 
-                    () => Update(taskId: 100+idx, account, TaskOperations.ToImmutableArray())));
+                .Select(idx =>
+                {
+                    var operations = TaskOperations.ToImmutableArray();
+                    return Task.Run(() => Update(taskId: 100 + idx, account, operations));
+                });
             await Task.WhenAll(tasks);
             PrintGeneralReport(account);
             PrintOperationLog(account);
