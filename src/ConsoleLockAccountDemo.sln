@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleLockAccountDemo", "ConsoleLockAccountDemo\ConsoleLockAccountDemo.csproj", "{B59162C4-B047-4932-AB66-4B9BBD8AB99D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B59162C4-B047-4932-AB66-4B9BBD8AB99D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B59162C4-B047-4932-AB66-4B9BBD8AB99D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B59162C4-B047-4932-AB66-4B9BBD8AB99D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B59162C4-B047-4932-AB66-4B9BBD8AB99D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

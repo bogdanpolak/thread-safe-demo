@@ -1,0 +1,9 @@
+﻿.idea
+launchSettings.json
+
+.vscode
+.vs
+
+**/obj/
+**/bin/
+*.DotSettings.user
