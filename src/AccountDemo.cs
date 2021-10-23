@@ -20,28 +20,22 @@ namespace ConsoleLockAccountDemo
                 .Select(idx =>
                 {
                     var operations = TaskOperations.ToImmutableArray();
-                    return Task.Run(() => Update(taskId: 100 + idx, account, operations));
+                    return Task.Run(() => {
+                        var taskId = 100 + idx;
+                        foreach (var amount in operations)
+                        {
+                            if (amount >= 0)
+                                account.Credit(taskId, amount);
+                            else
+                                account.Debit(taskId, -amount);
+                        }
+                    });
                 });
             await Task.WhenAll(tasks);
             PrintGeneralReport(account);
             PrintOperationLog(account);
         }
 
-        private static void Update(int taskId, Account account, ImmutableArray<decimal> operations)
-        {
-            foreach (var amount in operations)
-            {
-                if (amount >= 0)
-                {
-                    account.Credit(taskId, amount);
-                }
-                else
-                {
-                    account.Debit(taskId, -amount);
-                }
-            }
-        }
-        
         private static void PrintGeneralReport(Account account)
         {
             var expected = InitialBalance + TaskOperations.Sum() * NumOfTasks;

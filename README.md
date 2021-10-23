@@ -36,3 +36,32 @@ Project is also using Ardalis Guard Clauses [github link](https://github.com/ard
 ```c#
 Guard.Against.Negative(amount, nameof(amount));
 ```
+
+## Demo
+
+Account class: [Account.cs](./src/Account.cs)
+
+Execution:
+```c#
+// InitialBalance = 1000.00m
+// NumOfTasks = 100
+// TaskOperations = { 5, 2, -3, 6, -2, -1, 8, -5, 11, -6 }
+
+var account = new Account(InitialBalance);
+var tasks = Enumerable.Range(0, NumOfTasks)
+    .Select(idx =>
+    {
+        var operations = TaskOperations.ToImmutableArray();
+        return Task.Run(() => {
+            var taskId = 100 + idx;
+            foreach (var amount in operations)
+            {
+                if (amount >= 0)
+                    account.Credit(taskId, amount);
+                else
+                    account.Debit(taskId, -amount);
+            }
+        });
+    });
+await Task.WhenAll(tasks);
+```
