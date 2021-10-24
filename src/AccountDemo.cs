@@ -40,12 +40,12 @@ namespace ConsoleLockAccountDemo
         {
             var expected = InitialBalance + TaskOperations.Sum() * NumOfTasks;
             Console.WriteLine($"Account's balance is {account.GetBalance()} (expected is: {expected})");
-            Console.WriteLine($"Total operations logged: {account.OperationLog.Count}");
+            Console.WriteLine($"Total operations logged: {account.GetOperationLogCount()}");
         }
 
         private static void PrintOperationLog(Account account)
         {
-            var accountOperationLog = account.OperationLog;
+            var accountOperationLog = account.GetOperationLog();
             var sb = new StringBuilder();
             for (var idx = 0; idx < accountOperationLog.Count; idx++)
             {

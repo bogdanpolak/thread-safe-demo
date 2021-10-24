@@ -21,7 +21,7 @@ namespace ConsoleLockAccountDemo
             {
                 var appliedAmount = amount<=_balance ? amount : 0;
                 _balance -= appliedAmount;
-                LogOperation(taskId, -appliedAmount);
+                Log(taskId, -appliedAmount);
             }
         }
 
@@ -31,7 +31,7 @@ namespace ConsoleLockAccountDemo
             lock (_balanceLock)
             {
                 _balance += amount;
-                LogOperation(taskId, amount);
+                Log(taskId, amount);
             }
         }
 
@@ -43,7 +43,7 @@ namespace ConsoleLockAccountDemo
             }
         }
 
-        private void LogOperation(int taskId, decimal amount)
+        private void Log(int taskId, decimal amount)
         {
             lock (_balanceLock)
             {
@@ -51,6 +51,20 @@ namespace ConsoleLockAccountDemo
             }
         }
 
-        public ImmutableList<AccountOperation> OperationLog => _operationLog.ToImmutableList();
+        public ImmutableList<AccountOperation> GetOperationLog()
+        {
+            lock (_balanceLock)
+            {
+                return _operationLog.ToImmutableList();
+            }
+        }
+
+        public int GetOperationLogCount()
+        {
+            lock (_balanceLock)
+            {
+                return _operationLog.Count;
+            }
+        }
     }
 }
